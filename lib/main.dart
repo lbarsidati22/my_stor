@@ -6,6 +6,7 @@ import 'package:my_stor/core/utils/routes/app_router.dart';
 import 'package:my_stor/core/utils/routes/app_routes.dart';
 import 'package:my_stor/core/utils/theme/app_theme.dart';
 import 'package:my_stor/features/auth/auth_cubit/auth_cubit.dart';
+import 'package:my_stor/features/home/cubit/home_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +22,19 @@ class MyShop extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            return AuthCubit();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return HomeCubit()..getBanners();
+          },
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

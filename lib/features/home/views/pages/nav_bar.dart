@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_stor/core/utils/theme/app_colors.dart';
 import 'package:my_stor/features/cart/views/pages/cart_page.dart';
 import 'package:my_stor/features/category/views/pages/category_page.dart';
 import 'package:my_stor/features/favorite/views/pages/favorite_page.dart';
@@ -81,47 +83,37 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: currentIndex != 0 ? true : false,
-      //   leading: Padding(
-      //     padding: const EdgeInsets.all(4.0),
-      //     child: CircleAvatar(
-      //       radius: 25,
-      //       backgroundImage: AssetImage('assets/images/lbar.jpg'),
-      //     ),
-      //   ),
-      //   title: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       Text(
-      //         'Lbar Sidati',
-      //         style: Theme.of(context).textTheme.titleMedium!.copyWith(),
-      //       ),
-      //       Text(
-      //         'Let\'s go shooping',
-      //         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-      //               color: Colors.grey,
-      //             ),
-      //       ),
-      //     ],
-      //   ),
-      //   actions: [
-      //     if (currentIndex == 0) ...[
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: Icon(Icons.search),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: Icon(Icons.notifications),
-      //       ),
-      //     ] else if (currentIndex == 1)
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: Icon(Icons.shopping_bag),
-      //       )
-      //   ],
-      // ),
+      appBar: AppBar(
+        //centerTitle: currentIndex != 0 ? true : false,
+        // leading: Padding(
+        //   padding: const EdgeInsets.all(4.0),
+        //   child: CircleAvatar(
+        //     radius: 25,
+        //     backgroundImage: AssetImage('assets/images/lbar.jpg'),
+        //   ),
+        // ),
+        title: SvgPicture.asset(
+          'assets/images/logo.svg',
+          height: 55,
+          color: AppColors.primaryColor,
+        ),
+        // actions: [
+        //   if (currentIndex == 0) ...[
+        //     IconButton(
+        //       onPressed: () {},
+        //       icon: Icon(Icons.search),
+        //     ),
+        //     IconButton(
+        //       onPressed: () {},
+        //       icon: Icon(Icons.notifications),
+        //     ),
+        //   ] else if (currentIndex == 1)
+        //     IconButton(
+        //       onPressed: () {},
+        //       icon: Icon(Icons.shopping_bag),
+        //     )
+        // ],
+      ),
       body: PersistentTabView(
         context,
         controller: _controller,
