@@ -32,7 +32,9 @@ class MainBottom extends StatelessWidget {
         ),
         onPressed: onTap,
         child: isLeading
-            ? CircularProgressIndicator.adaptive()
+            ? CircularProgressIndicator.adaptive(
+                backgroundColor: AppColors.white,
+              )
             : Text(
                 text!,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(

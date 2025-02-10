@@ -31,7 +31,7 @@ class LabelWithTextFeiled extends StatelessWidget {
         ),
         TextFormField(
           validator: (value) {
-            value == null || value.isEmpty ? '${label} Cannot Be empty' : null;
+            value == null || value.isEmpty ? '$label Cannot Be empty' : null;
           },
           controller: controller,
           obscureText: obSucurText,
