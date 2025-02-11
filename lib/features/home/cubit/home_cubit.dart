@@ -13,14 +13,39 @@ class HomeCubit extends Cubit<HomeState> {
       final result = await homeServices.getBanners();
       if (result.status == true) {
         emit(BannersLoaded(result.data ?? []));
-        print('done banners is ${result.data}');
       } else {
         emit(BannersError(result.message));
-        print('have error is ${result.message}');
       }
     } catch (e) {
       emit(BannersError(e.toString()));
-      print('have error is ${e.toString()}');
+    }
+  }
+
+  Future<void> getCategories() async {
+    emit(CategoryLeading());
+    try {
+      final result = await homeServices.getCategories();
+      if (result.status == true) {
+        emit(CategoryLoaded(result.data!.data));
+      } else {
+        emit(CategoryError(result.message));
+      }
+    } catch (e) {
+      emit(CategoryError(e.toString()));
+    }
+  }
+
+  Future<void> getProducts() async {
+    emit(ProductsLeading());
+    try {
+      final result = await homeServices.getProducts();
+      if (result.status == true) {
+        emit(ProductsLoaded(result.data!.products));
+      } else {
+        emit(ProductsError(result.message));
+      }
+    } catch (e) {
+      emit(ProductsError(e.toString()));
     }
   }
 }

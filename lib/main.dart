@@ -31,7 +31,10 @@ class MyShop extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) {
-            return HomeCubit()..getBanners();
+            return HomeCubit()
+              ..getBanners()
+              ..getCategories()
+              ..getProducts();
           },
         )
       ],
