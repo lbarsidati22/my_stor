@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_stor/core/utils/theme/app_colors.dart';
 import 'package:my_stor/features/cart/views/pages/cart_page.dart';
-import 'package:my_stor/features/category/views/pages/category_page.dart';
 import 'package:my_stor/features/favorite/views/pages/favorite_page.dart';
 import 'package:my_stor/features/home/views/pages/home_page.dart';
 import 'package:my_stor/features/profile/views/pages/profile_page.dart';
@@ -36,14 +35,14 @@ class _NavBarState extends State<NavBar> {
         ),
         title: 'Home',
       ),
-      PersistentBottomNavBarItem(
-        inactiveColorPrimary: Colors.blueGrey,
-        activeColorPrimary: Theme.of(context).primaryColor,
-        icon: Icon(
-          Icons.category_sharp,
-        ),
-        title: 'Category',
-      ),
+      // PersistentBottomNavBarItem(
+      //   inactiveColorPrimary: Colors.blueGrey,
+      //   activeColorPrimary: Theme.of(context).primaryColor,
+      //   icon: Icon(
+      //     Icons.category_sharp,
+      //   ),
+      //   title: 'Category',
+      // ),
       PersistentBottomNavBarItem(
         inactiveColorPrimary: Colors.blueGrey,
         activeColorPrimary: Theme.of(context).primaryColor,
@@ -74,7 +73,7 @@ class _NavBarState extends State<NavBar> {
   int currentIndex = 0;
   List<Widget> screens = [
     HomePage(),
-    CategoryPage(),
+    // CategoryPage(),
     CartPage(),
     FavoritePage(),
     ProfilePage(),

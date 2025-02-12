@@ -60,4 +60,24 @@ class HomeServices {
       rethrow;
     }
   }
+  //   Future<SoftagiResponse> getFavorites() async {
+  //   try {
+  //     aDio.options.baseUrl = AppConstants.baseUrl;
+  //     final headers = {
+  //       'Authorization': AppConstants.token,
+  //       'lang': 'en',
+  //     };
+  //     final response = await aDio.get('favorites',
+  //         options: Options(
+  //           headers: headers,
+  //         ));
+  //     if (response.statusCode == 200) {
+  //       return SoftagiResponse.fromMap(response.data);
+  //     } else {
+  //       throw Exception(response.statusMessage);
+  //     }
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }

@@ -79,11 +79,28 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Text(
-              'Categories',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Categories',
+                  style: Theme.of(context).textTheme.titleLarge!,
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Navigator.of(context, rootNavigator: true).pushNamed(
+                    //   AppRoutes.categoryRoute,
+                    // );
+                  },
+                  child: Text(
+                    'View all',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primaryColor,
+                        ),
                   ),
+                ),
+              ],
             ),
             SizedBox(
               height: 10,
@@ -113,31 +130,38 @@ class HomePage extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
                         final category = categories[index];
-                        return Container(
-                          width: size.width * 0.2,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColors.white,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 6),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CachedNetworkImage(
-                                  height: size.height * 0.09,
-                                  fit: BoxFit.cover,
-                                  imageUrl:
-                                      category.image ?? AppConstants.imageNull,
-                                ),
-                                Text(
-                                  maxLines: 1,
-                                  category.name ?? '',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ],
+                        return InkWell(
+                          onTap: () {
+                            Navigator.of(context, rootNavigator: true)
+                                .pushNamed(AppRoutes.categoryRoute,
+                                    arguments: category);
+                          },
+                          child: Container(
+                            width: size.width * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: AppColors.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 6),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CachedNetworkImage(
+                                    height: size.height * 0.09,
+                                    fit: BoxFit.cover,
+                                    imageUrl: category.image ??
+                                        AppConstants.imageNull,
+                                  ),
+                                  Text(
+                                    maxLines: 1,
+                                    category.name ?? '',
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );
@@ -195,14 +219,7 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final product = products[index];
                       // final productName = product.name;
-                      return InkWell(
-                        onTap: () {
-                          Navigator.of(context, rootNavigator: true).pushNamed(
-                            AppRoutes.productDetailsRoute,
-                          );
-                        },
-                        child: ProductItem(product: product),
-                      );
+                      return ProductItem(product: product);
                     },
                   );
                 } else {

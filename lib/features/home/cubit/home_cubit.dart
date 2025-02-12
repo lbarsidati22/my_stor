@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_stor/features/home/cubit/home_state.dart';
+import 'package:my_stor/features/home/model/category_model.dart';
 import 'package:my_stor/features/home/services/home_services.dart';
 import 'package:my_stor/features/home/model/banner_model.dart';
 
@@ -21,6 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+  // List<CategoryData> categories = [];
   Future<void> getCategories() async {
     emit(CategoryLeading());
     try {
